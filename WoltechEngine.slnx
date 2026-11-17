@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="WE.AssetPipeline/WE.AssetPipeline.csproj" Id="dd3e9b58-d76c-4754-88cd-65cffce10eb3" />
+  <Project Path="WE.Core/WE.Core.csproj" Id="55b844a4-3a57-4259-9589-5cf1a281375e" />
+  <Project Path="WE.Editor/WE.Editor.fsproj" Id="bad90c3f-4650-421c-a83a-2da957ed56aa" />
+  <Project Path="WE.Graphics/WE.Graphics.csproj" />
+  <Project Path="WE.Launcher/WE.Launcher.csproj" Id="3e55d220-8253-400d-92d2-411faf2da6c1" />
+  <Project Path="WE.Sandbox/WE.Sandbox.csproj" Id="ec608c45-a16a-4e0f-8951-ba434f273c53" />
+</Solution>
