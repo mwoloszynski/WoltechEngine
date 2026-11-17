@@ -4,5 +4,6 @@
   <Project Path="WE.Editor/WE.Editor.fsproj" Id="bad90c3f-4650-421c-a83a-2da957ed56aa" />
   <Project Path="WE.Graphics/WE.Graphics.csproj" />
   <Project Path="WE.Launcher/WE.Launcher.csproj" Id="3e55d220-8253-400d-92d2-411faf2da6c1" />
+  <Project Path="WE.Runtime/WE.Runtime.csproj" Id="788cebd2-db8c-407b-b55b-736d5b56652a" />
   <Project Path="WE.Sandbox/WE.Sandbox.csproj" Id="ec608c45-a16a-4e0f-8951-ba434f273c53" />
 </Solution>
