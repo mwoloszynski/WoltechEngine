@@ -11,6 +11,8 @@ namespace WE.Core.ECS
 
         public Dictionary<int, TransformComponent> Transforms { get; } = new();
         public Dictionary<int, SpriteComponent> Sprites { get; } = new();
+        public Dictionary<int, MeshComponent> Meshes { get; } = new();
+        public Dictionary<int, BoxColliderComponent> BoxColliders { get; } = new();
 
         public List<int> Entities { get; } = new();
 
@@ -26,6 +28,8 @@ namespace WE.Core.ECS
             Entities.Remove(entityId);
             Transforms.Remove(entityId);
             Sprites.Remove(entityId);
+            Meshes.Remove(entityId);
+            BoxColliders.Remove(entityId);
         }
     }
 }
