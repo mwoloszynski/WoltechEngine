@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WE.Core\WE.Core.csproj" />
+    <ProjectReference Include="..\WE.Graphics\WE.Graphics.csproj" />
+  </ItemGroup>
+
 </Project>

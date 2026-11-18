@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WE.AssetPipeline\WE.AssetPipeline.csproj" />
     <ProjectReference Include="..\WE.Core\WE.Core.csproj" />
     <ProjectReference Include="..\WE.Runtime\WE.Runtime.csproj" />
   </ItemGroup>
