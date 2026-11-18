@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WE.Editor.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="clr-namespace:WE.Editor.Controls"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="850"
+        x:Class="WE.Editor.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+		Background="#1E1E1E" 
+		Foreground="White"
+        Title="WoltechEngine Editor">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel />
+    </Design.DataContext>
+
+	<DockPanel>
+		<!-- Top Menu Bar bound to ViewModel Commands -->
+		<Border DockPanel.Dock="Top" Background="#2D2D30" Padding="6">
+			<StackPanel Orientation="Horizontal" Spacing="8">
+				<Button Content="New Scene" Command="{Binding NewSceneCommand}"/>
+				<Button Content="Save Scene" Command="{Binding SaveSceneCommand}"/>
+				<Button Content="Load Scene" Command="{Binding LoadSceneCommand}"/>
+
+				<Separator Width="1" Background="#3E3E42" Margin="4,0"/>
+
+				<Button Content="+ Add Cube" Command="{Binding AddCubeCommand}" Background="#0E639C"/>
+				<Button Content="+ Add Pyramid" Command="{Binding AddPyramidCommand}" Background="#0E639C"/>
+			</StackPanel>
+		</Border>
+
+		<!-- Main 3-Column Editor Layout -->
+		<Grid ColumnDefinitions="250, 4, *, 4, 300">
+
+			<!-- Left Column: Scene Hierarchy -->
+			<Border Grid.Column="0" Background="#252526" Padding="8">
+				<DockPanel>
+					<TextBlock DockPanel.Dock="Top" Text="SCENE HIERARCHY" FontWeight="Bold" Foreground="#CCCCCC" Margin="0,0,0,8"/>
+					<ListBox Background="#1E1E1E"
+                             ItemsSource="{Binding Entities}"
+                             SelectedItem="{Binding SelectedEntity}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding DisplayName}"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</DockPanel>
+			</Border>
+
+			<GridSplitter Grid.Column="1" Background="#3E3E42" ResizeDirection="Columns"/>
+
+			<!-- Center Column: OpenGL Viewport bound to Registry & Camera -->
+			<Border Grid.Column="2" BorderBrush="#3E3E42" BorderThickness="1">
+				<controls:ViewportControl ActiveRegistry="{Binding ActiveRegistry}"
+                                          ActiveCamera="{Binding EditorCamera}"/>
+			</Border>
+
+			<GridSplitter Grid.Column="3" Background="#3E3E42" ResizeDirection="Columns"/>
+
+			<!-- Right Column: 3D Inspector -->
+			<Border Grid.Column="4" Width="300" Background="#252526" Padding="12">
+				<Grid>
+					<StackPanel Spacing="10" IsVisible="{Binding IsEntitySelected}">
+						<TextBlock Text="3D INSPECTOR" FontWeight="Bold" Foreground="#CCCCCC"/>
+						<Separator Background="#3E3E42"/>
+
+						<TextBlock Text="Position (X, Y, Z)" FontWeight="SemiBold" Foreground="#4EC9B0"/>
+						<Grid ColumnDefinitions="30, *" RowDefinitions="Auto, Auto, Auto" Margin="0,4">
+							<TextBlock Grid.Row="0" Grid.Column="0" Text="X:" VerticalAlignment="Center"/>
+							<NumericUpDown Grid.Row="0" Grid.Column="1" Increment="0.25" FormatString="0.00" Value="{Binding PosX}"/>
+
+							<TextBlock Grid.Row="1" Grid.Column="0" Text="Y:" VerticalAlignment="Center" Margin="0,6,0,0"/>
+							<NumericUpDown Grid.Row="1" Grid.Column="1" Increment="0.25" FormatString="0.00" Margin="0,6,0,0" Value="{Binding PosY}"/>
+
+							<TextBlock Grid.Row="2" Grid.Column="0" Text="Z:" VerticalAlignment="Center" Margin="0,6,0,0"/>
+							<NumericUpDown Grid.Row="2" Grid.Column="1" Increment="0.25" FormatString="0.00" Margin="0,6,0,0" Value="{Binding PosZ}"/>
+						</Grid>
+
+						<TextBlock Text="Scale (X, Y, Z)" FontWeight="SemiBold" Foreground="#4EC9B0" Margin="0,10,0,0"/>
+						<Grid ColumnDefinitions="30, *" RowDefinitions="Auto, Auto, Auto" Margin="0,4">
+							<TextBlock Grid.Row="0" Grid.Column="0" Text="X:" VerticalAlignment="Center"/>
+							<NumericUpDown Grid.Row="0" Grid.Column="1" Increment="0.25" Minimum="0.1" FormatString="0.00" Value="{Binding ScaleX}"/>
+
+							<TextBlock Grid.Row="1" Grid.Column="0" Text="Y:" VerticalAlignment="Center" Margin="0,6,0,0"/>
+							<NumericUpDown Grid.Row="1" Grid.Column="1" Increment="0.25" Minimum="0.1" FormatString="0.00" Margin="0,6,0,0" Value="{Binding ScaleY}"/>
+
+							<TextBlock Grid.Row="2" Grid.Column="0" Text="Z:" VerticalAlignment="Center" Margin="0,6,0,0"/>
+							<NumericUpDown Grid.Row="2" Grid.Column="1" Increment="0.25" Minimum="0.1" FormatString="0.00" Margin="0,6,0,0" Value="{Binding ScaleZ}"/>
+						</Grid>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+		</Grid>
+	</DockPanel>
+
+</Window>

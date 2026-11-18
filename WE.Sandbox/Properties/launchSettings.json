@@ -1,8 +1,7 @@
 {
   "profiles": {
     "WE.Sandbox": {
-      "commandName": "Project",
-      "commandLineArgs": "--3d"
+      "commandName": "Project"
     }
   }
 }

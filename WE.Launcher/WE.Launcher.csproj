@@ -7,4 +7,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Silk.NET.Maths" Version="2.23.0" />
+    <PackageReference Include="Silk.NET.OpenGL" Version="2.23.0" />
+    <PackageReference Include="Silk.NET.Windowing" Version="2.23.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WE.AssetPipeline\WE.AssetPipeline.csproj" />
+    <ProjectReference Include="..\WE.Core\WE.Core.csproj" />
+    <ProjectReference Include="..\WE.Graphics\WE.Graphics.csproj" />
+    <ProjectReference Include="..\WE.Runtime\WE.Runtime.csproj" />
+  </ItemGroup>
+
 </Project>
